@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Marathonplan</title>
+	<meta charset="UTF-8">
+	<style>
+	body{padding:5px}
+	tr.todo{color: black}
+	tr.done{color:#009900}
+	a.linkdone{color:#009900}
+	a.linktodo{color:#000000}
+	table{table-layout:auto;font-size:12px}
+	#Erklaerung{font-size:120%}
+	.Schnitt{font-size:120%}
+	</style>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div class="container">
+	<div class="row"><h1>Trainingsplan für den Regensburg Marathon</h1></div>
+	<!-- <p>für Simon Fink und Mathias Ferstl</br>Dieser Plan ist als Ansporn gedacht, ihr seid gar nicht so faul ;-)</p> -->
+	<div class="row"><p id="countdown" style="color:gray;font-size:150%;font-weight:bold"></p></div>
+	<div class="row">Fortschritt: 
+		<div class="progress">
+			<div id="progressText" class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="3475" style="width:5%">0%</div>
+		</div>
+	</div>
+	<div class="row" id="Erklaerung">% MHF bei 23 Jahren: 60 - 118 | 65 - 128 | 70 - 138 | 75 - 148 | 80 - 158 | 85 - 167</div>
+	<div class="container" style="padding-top:10pt">
+		<form>
+			<div class="form-group">
+				<label style="font-weight:bold" class="Schnitt">Durchschnittliche Geschwindigkeit berechnen</label></br>			
+				<label class="Schnitt">Strecke in km: </label><input id="distance" type="number" min="0" max="100" step="0.1" value="" size="5"></br>
+				<label class="Schnitt">Zeit in min: </label><input id="time" type="number" min="0" max="500" step="1" value="" size="5"></br>
+				<button type="button" id="berechnen">Schnitt berechnen</button>
+			<label id="average"></label>
+			</div>
+		</form>
+	</div>
+    <div class="container table-responsive">
+        <table class="table table-striped">
+        <thead>
+          <tr>
+            <th></th>
+			<th>Tag</th>
+			<th>Datum</th>
+			<th>Dauer</th>
+			<th>Einheit</th>
+			<th title="Maus über die Zahlen legen und Herzfrequenz anzeigen lassen. Die Angaben beziehen sich auf eine 23-jährige Person. Formel: (220 - Alter)* %MHF">% MHF</th>
+			<th>Training</th>
+          </tr>
+        </thead>
+        <tbody>
+			<tr><td rowspan=8>Woche 1</br><i>Gewöhnung</i></td></tr> <!--250 Minuten-->
+			<tr class="done"><td>Mo.</td><td>19.02.2018</td><td></td><td></td><td></td></tr> <!-- Farbe fuer den Hintergrund -- bgcolor="#00cc00" -->
+			<tr class="done"><td>Di.</td><td>20.02.2018</td><td>30 min</td><td><a href="#IntensiverTempolauf" class="linkdone">Intensiver Tempolauf</a></td><td title="HF: 158-167">80-85</td><td>Kondi (0:55)</td></tr>
+			<tr class="done"><td>Mi.</td><td>21.02.2018</td><td>20 min</td><td>Krafttraining</td><td></td><td></td></tr>
+			<tr class="done"><td>Do.</td><td>22.02.2018</td><td>60 min</td><td><a href="#LockererDauerlauf" class="linkdone">Lockerer Dauerlauf</a></td><td title="HF: 118-148">60-75</td><td>10.2km (0:59)</td></tr>
+			<tr class="done"><td>Fr.</td><td>23.02.2018</td><td></td><td></td><td></td><td></td></tr>
+			<tr class="done"><td>Sa.</td><td>24.02.2018</td><td>50 min</td><td><a href="#ExtensiverTempolauf" class="linkdone">Extensiver Tempolauf</a></td><td title="HF: 148-158">75-80</td><td>10.8km (0:54)</td></tr>
+			<tr class="done"><td>So.</td><td>25.02.2018</td><td>90 min</td><td><a href="#Fettstoffwechseltraining" class="linkdone">Fettstoffwechseltraining</a></td><td title="HF: 118-128">60-65</td><td>14.8km (1:25)</td></tr>
+			<tr><td rowspan=8>Woche 2</br><i>Gewöhnung</i></td></tr> <!--280 Minuten-->
+			<tr class="done"><td>Mo.</td><td>26.02.2018</td><td></td><td></td><td></td><td></td></tr>
+			<tr class="done"><td>Di.</td><td>27.02.2018</td><td>35 min</td><td><a href="#IntensiverTempolauf" class="linkdone">Intensiver Tempolauf</a></td><td title="HF: 158-167">80-85</td><td>7.5km (0:35)</td></tr>
+			<tr class="done"><td>Mi.</td><td>28.02.2018</td><td>20 min</td><td>Krafttraining</td><td></td><td>(0:20) Sa. 03.03.</td></tr>
+			<tr class="todo"><td>Do.</td><td>01.03.2018</td><td>70 min</td><td><a href="#LockererDauerlauf" class="linktodo">Lockerer Dauerlauf</a></td><td title="HF: 118-148">60-75</td><td></td></tr>
+			<tr class="done"><td>Fr.</td><td>02.03.2018</td><td></td><td></td><td></td><td></td></tr>
+			<tr class="done"><td>Sa.</td><td>03.03.2018</td><td>50 min</td><td><a href="#ExtensiverTempolauf" class="linkdone">Extensiver Tempolauf</a></td><td title="HF: 148-158">75-80</td><td>10.7km (0:52)</td></tr>
+			<tr class="done"><td>So.</td><td>04.03.2018</td><td>105 min</td><td><a href="#Fettstoffwechseltraining" class="linkdone">Fettstoffwechseltraining</a></td><td title="HF: 118-128">60-65</td><td>21.5km (1:53)</td></tr>
+			<tr><td rowspan=8>Woche 3</br><i>Gewöhnung</i></td></tr> <!--210 Minuten-->
+			<tr class="done"><td>Mo.</td><td>05.03.2018</td><td></td><td></td><td></td><td></td></tr>
+			<tr class="done"><td>Di.</td><td>06.03.2018</td><td>30 min</td><td>Schwimmen</td><td>60-65</td><td>Kondi (0:55)</td></tr>
+			<tr class="done"><td>Mi.</td><td>07.03.2018</td><td>40 min</td><td><a href="#RegenerativerLauf" class="linkdone">Regenerativer Lauf</a></td><td title="HF: 118-128">60-65</td><td>7.9km (0:42)</td></tr>
+			<tr class="done"><td>Do.</td><td>08.03.2018</td><td></td><td></td><td></td><td></td></tr>
+			<tr class="done"><td>Fr.</td><td>09.03.2018</td><td>20 min</td><td>Krafttraining</td><td></td><td>Kondi (0:40) Do. 08.03.</td></tr>
+			<tr class="todo"><td>Sa.</td><td>10.03.2018</td><td>40 min</td><td><a href="#LockererDauerlauf" class="linktodo">Lockerer Dauerlauf</a></td><td title="HF: 128-148">65-75</td><td></td></tr>
+			<tr class="done"><td>So.</td><td>11.03.2018</td><td>80 min</td><td><a href="#Fettstoffwechseltraining" class="linkdone">Fettstoffwechseltraining</a></td><td title="HF: 118-128">60-65</td><td>18.0km (1:21) Sa. 10.03.</td></tr>
+			<tr><td rowspan=8>Woche 4</br><i>Aufbau</i></td></tr> <!--275 Minuten-->
+			<tr class="done"><td>Mo.</td><td>12.03.2018</td><td></td><td></td><td></td><td></td></tr>
+			<tr class="done"><td>Di.</td><td>13.03.2018</td><td>45 min</td><td><a href="#ExtensiverTempolauf" class="linkdone">Extensiver Tempolauf</a></td><td title="HF: 148-158">75-80</td><td>10.9km (0:53)</td></tr>
+			<tr class="todo"><td>Mi.</td><td>14.03.2018</td><td>20 min</td><td>Krafttraining</td><td></td><td></td></tr>
+			<tr class="done"><td>Do.</td><td>15.03.2018</td><td>60 min</td><td><a href="#ProgressiverDauerlauf" class="linkdone">Progressiver Dauerlauf</a></td><td title="HF: 138">70</td><td>11.0km (1:00)</td></tr>
+			<tr class="done"><td>Fr.</td><td>16.03.2018</td><td></td><td></td><td></td><td></td></tr>
+			<tr class="todo"><td>Sa.</td><td>17.03.2018</td><td>30 min</td><td><a href="#IntensiverTempolauf" class="linktodo">Intensiver Tempolauf</a></td><td title="HF: 158-167">80-85</td><td></td></tr>
+			<tr class="todo"><td>So.</td><td>18.03.2018</td><td>120 min</td><td><a href="#Fettstoffwechseltraining" class="linktodo">Fettstoffwechseltraining</a></td><td title="HF: 118-128">60-65</td><td></td></tr>
+			<tr><td rowspan=8>Woche 5</br><i>Aufbau</i></td></tr> <!--310 Minuten-->
+			<tr class="done"><td>Mo.</td><td>19.03.2018</td><td></td><td></td><td></td><td></td></tr>
+			<tr class="todo"><td>Di.</td><td>20.03.2018</td><td>50 min</td><td><a href="#ExtensiverTempolauf" class="linktodo">Extensiver Tempolauf</a></td><td title="HF: 148-158">75-80</td><td></td></tr>
+			<tr class="todo"><td>Mi.</td><td>21.03.2018</td><td>20 min</td><td>Krafttraining</td><td></td><td></td></tr>
+			<tr class="done"><td>Do.</td><td>22.03.2018</td><td>70 min</td><td><a href="#ProgressiverDauerlauf" class="linkdone">Progressiver Dauerlauf</a></td><td title="HF: 138">70</td><td>13.5km (1:11) Fr. 23.03.</td></tr>
+			<tr class="done"><td>Fr.</td><td>23.03.2018</td><td></td><td></td><td></td><td></td></tr>
+			<tr class="todo"><td>Sa.</td><td>24.03.2018</td><td>40 min</td><td><a href="#IntensiverTempolauf" class="linktodo">Intensiver Tempolauf</a></td><td title="HF: 158-167">80-85</td><td></td></tr>
+			<tr class="todo"><td>So.</td><td>25.03.2018</td><td>130 min</td><td><a href="#Fettstoffwechseltraining" class="linktodo">Fettstoffwechseltraining</a></td><td title="HF: 118-128">60-65</td><td></td></tr>
+			<tr><td rowspan=8>Woche 6</br><i>Aufbau</i></td></tr> <!--350 Minuten-->
+			<tr class="done"><td>Mo.</td><td>26.03.2018</td><td></td><td></td><td></td><td></td></tr>
+			<tr class="done"><td>Di.</td><td>27.03.2018</td><td>40 min</td><td><a href="#IntensiverTempolauf" class="linkdone">Intensiver Tempolauf</a></td><td title="HF: 158-167">80-85</td><td>8.0km (0:33) Fr. 30.03.</td></tr>
+			<tr class="done"><td>Mi.</td><td>28.03.2018</td><td>90 min</td><td><a href="#ProgressivesFettstoffwechseltraining" class="linkdone">Progressives Fettstoffwechseltraining</a></td><td title="HF: 128">65</td><td>18.0km (1:29) Mo. 26.03.</td></tr>
+			<tr class="done"><td>Do.</td><td>29.03.2018</td><td></td><td></td><td></td><td></td></tr>
+			<tr class="done"><td>Fr.</td><td>30.03.2018</td><td>20 min</td><td>Krafttraining</td><td></td><td>Mi. 04.04.</td></tr>
+			<tr class="done"><td>Sa.</td><td>31.03.2018</td><td>60 min</td><td><a href="#LockererDauerlauf" class="linkdone">Lockerer Dauerlauf</a></td><td title="HF: 128-148">65-75</td><td>12.6km (1:03) So. 01.04.</td></tr>
+			<tr class="todo"><td>So.</td><td>01.04.2018</td><td>140 min</td><td><a href="#Fettstoffwechseltraining" class="linktodo">Fettstoffwechseltraining</a></td><td title="HF: 118-128">60-65</td><td></td></tr>
+			<tr><td rowspan=8>Woche 7</br><i>Aufbau</i></td></tr> <!--275 Minuten-->
+			<tr class="done"><td>Mo.</td><td>02.04.2018</td><td></td><td></td><td></td><td></td></tr>
+			<tr class="todo"><td>Di.</td><td>03.04.2018</td><td>40 min</td><td>Schwimmen</td><td></td><td></td></tr>
+			<tr class="done"><td>Mi.</td><td>04.04.2018</td><td>25 min</td><td>Krafttraining</td><td></td><td>(0:25) Di. 10.04.</td></tr>
+			<tr class="done"><td>Do.</td><td>05.04.2018</td><td>60 min</td><td><a href="#LockererDauerlauf" class="linkdone">Lockerer Dauerlauf</a></td><td title="HF: 128-148">65-75</td><td>9.6km (0:49) Mi. 04.04.</td></tr>
+			<tr class="done"><td>Fr.</td><td>06.04.2018</td><td></td><td></td><td></td><td></td></tr>
+			<tr class="done"><td>Sa.</td><td>07.04.2018</td><td>90 min</td><td><a href="#Fettstoffwechseltraining" class="linkdone">Fettstoffwechseltraining</a></td><td title="HF: 118-128">60-65</td><td>17.8km (1:26)</td></tr>
+			<tr class="done"><td>So.</td><td>08.04.2018</td><td>60 min</td><td>Radfahren</td><td>60-65</td><td>14.7km (0:55)</td></tr>
+			<tr><td rowspan=8>Woche 8</br><i>Intensität</i></td></tr> <!--330 Minuten-->
+			<tr class="done"><td>Mo.</td><td>09.04.2018</td><td></td><td></td><td></td><td></td></tr>
+			<tr class="done"><td>Di.</td><td>10.04.2018</td><td>45 min</td><td><a href="#IntensiverTempolauf" class="linkdone">Intensiver Tempolauf</a></td><td title="HF: 158-167">80-85</td><td>9.0km (0:42) Mo. 09.04.</td></tr>
+			<tr class="done"><td>Mi.</td><td>11.04.2018</td><td>80 min</td><td><a href="#ProgressiverDauerlauf" class="linkdone">Progressiver Dauerlauf</a></td><td title="HF: 138">70</td><td>16.2km (1:25)</td></tr>
+			<tr class="done"><td>Do.</td><td>12.04.2018</td><td></td><td></td><td></td><td></td></tr>
+			<tr class="todo"><td>Fr.</td><td>13.04.2018</td><td>20 min</td><td>Krafttraining</td><td></td><td></td></tr>
+			<tr class="todo"><td>Sa.</td><td>14.04.2018</td><td>50 min</td><td><a href="#ExtensiverTempolauf" class="linktodo">Extensiver Tempolauf</a></td><td title="HF: 128-148">65-75</td><td></td></tr>
+			<tr class="done"><td>So.</td><td>15.04.2018</td><td>135 min</td><td><a href="#Fettstoffwechseltraining" class="linkdone">Fettstoffwechseltraining</a></td><td title="HF: 118-128">60-65</td><td>21.1km (1:35) HM Linz</td></tr>
+			<tr><td rowspan=8>Woche 9</br><i>Intensität</i></td></tr> <!--375 Minuten-->
+			<tr class="done"><td>Mo.</td><td>16.04.2018</td><td></td><td></td><td></td><td></td></tr>
+			<tr class="todo"><td>Di.</td><td>17.04.2018</td><td>45 min</td><td><a href="#IntensivesIntervalltraining" class="linktodo">Intensives Intervalltraining</a></td><td title="HF: 167-177">85-90</td><td></td></tr>
+			<tr class="todo"><td>Mi.</td><td>18.04.2018</td><td>100 min</td><td><a href="#ProgressivesFettstoffwechseltraining" class="linktodo">Progressives Fettstoffwechseltraining</a></td><td title="HF: 128">65</td><td></td></tr>
+			<tr class="done"><td>Do.</td><td>19.04.2018</td><td></td><td></td><td></td><td>6.20km (0:41)</td></tr>
+			<tr class="todo"><td>Fr.</td><td>20.04.2018</td><td>20 min</td><td>Krafttraining</td><td></td><td></td></tr>
+			<tr class="todo"><td>Sa.</td><td>21.04.2018</td><td>60 min</td><td><a href="#ExtensiverTempolauf" class="linktodo">Extensiver Tempolauf</a></td><td title="HF: 128-148">65-75</td><td></td></tr>
+			<tr class="todo"><td>So.</td><td>22.04.2018</td><td>150 min</td><td><a href="#Fettstoffwechseltraining" class="linktodo">Fettstoffwechseltraining</a></td><td title="HF: 118-128">60-65</td><td></td></tr>
+			<tr><td rowspan=8>Woche 10</br><i>Intensität</i></td></tr> <!--415 Minuten-->
+			<tr class="done"><td>Mo.</td><td>23.04.2018</td><td></td><td></td><td></td><td></td></tr>
+			<tr class="done"><td>Di.</td><td>24.04.2018</td><td>50 min</td><td><a href="#IntensivesIntervalltraining" class="linkdone">Intensives Intervalltraining</a></td><td title="HF: 167-177">85-90</td><td>8.75km (0:44)</td></tr>
+			<tr class="done"><td>Mi.</td><td>25.04.2018</td><td>110 min</td><td><a href="#ProgressivesFettstoffwechseltraining" class="linkdone">Progressives Fettstoffwechseltraining</a></td><td title="HF: 128">65</td><td>12.1km (1:01)</td></tr>
+			<tr class="done"><td>Do.</td><td>26.04.2018</td><td></td><td></td><td></td><td>12.2km (1:11)</td></tr>
+			<tr class="todo"><td>Fr.</td><td>27.04.2018</td><td>25 min</td><td>Krafttraining</td><td></td><td></td></tr>
+			<tr class="done"><td>Sa.</td><td>28.04.2018</td><td>80 min</td><td><a href="#ProgressiverDauerlauf" class="linkdone">Progressiver Dauerlauf</a></td><td title="HF: 138">70</td><td>12.8km (1:03)</td></tr>
+			<tr class="done"><td>So.</td><td>29.04.2018</td><td>150 min</td><td><a href="#Fettstoffwechseltraining" class="linkdone">Fettstoffwechseltraining</a></td><td title="HF: 118-128">60-65</td><td>26km(Rad) (1:22)</td></tr>
+			<tr><td rowspan=8>Woche 11</br><i>Wettkampf</i></td></tr> <!--315 Minuten-->
+			<tr class="done"><td>Mo.</td><td>30.04.2018</td><td></td><td></td><td></td><td>30.1km (2:33)</td></tr>
+			<tr class="todo"><td>Di.</td><td>01.05.2018</td><td>45 min</td><td>Schwimmen</td><td>60-65</td><td></td></tr>
+			<tr class="done"><td>Mi.</td><td>02.05.2018</td><td>40 min</td><td><a href="#RegenerativerLauf" class="linkdone">Regenerativer Lauf</a></td><td title="HF: 118-128">60-65</td><td>10.5km (1:04)</td></tr>
+			<tr class="todo"><td>Do.</td><td>03.05.2018</td><td>60 min</td><td><a href="#IntensivesIntervalltraining" class="linktodo">Intensives Intervalltraining</a></td><td title="HF: 167-177">85-90</td><td></td></tr>
+			<tr class="done"><td>Fr.</td><td>04.05.2018</td><td></td><td></td><td></td><td></td></tr>
+			<tr class="done"><td>Sa.</td><td>05.05.2018</td><td>70 min</td><td><a href="#ExtensiverTempolauf" class="linkdone">Extensiver Tempolauf</a></td><td title="HF: 148-158">75-80</td><td></td></tr>
+			<tr class="todo"><td>So.</td><td>06.05.2018</td><td>100 min</td><td><a href="#ProgressivesFettstoffwechseltraining" class="linktodo">Progressives Fettstoffwechseltraining</a></td><td title="HF: 128">65</td><td></td></tr>
+			<tr><td rowspan=8>Woche 12</br><i>Wettkampf</i></td></tr> <!--90 Minuten-->
+			<tr class="done"><td>Mo.</td><td>07.04.2018</td><td></td><td></td><td></td><td>14.7km (1:09)</td></tr>
+			<tr class="todo"><td>Di.</td><td>08.05.2018</td><td>30 min</td><td><a href="#RegenerativerLauf" class="linktodo">Regenerativer Lauf</a></td><td title="HF: 118-128">60-65</td><td></td></tr>
+			<tr class="todo"><td>Mi.</td><td>09.05.2018</td><td>40 min</td><td><a href="#IntensiverTempolauf" class="linktodo">4 x 5 min Intensiver Tempolauf</a></td><td title="HF: 158-167">80-85</td><td></td></tr>
+			<tr class="done"><td>Do.</td><td>10.05.2018</td><td></td><td></td><td></td><td>14.0km (1:09)</td></tr>
+			<tr class="todo"><td>Fr.</td><td>11.05.2018</td><td>20 min</td><td><a href="#RegenerativerLauf" class="linktodo">Regenerativer Lauf</a></td><td title="HF: 118-128">60-65</td><td></td></tr>
+			<tr class="todo"><td>Sa.</td><td>12.05.2018</td><td></td><td></td><td></td><td></td></tr>
+			<tr class="todo"><td>So.</td><td>13.05.2018</td><td><td><b>Marathon</b></td><td></td><td></td></tr>
+        </tbody>
+        </table>
+    </div>
+	<div class="container">
+	<h3>Bedeutung der Traningsbezeichnungen</h3>
+	<ul class="list-group">
+	<li id="LockererDauerlauf" class="list-group-item"><b>Lockerer Dauerlauf</b></li>
+	<ul class="list-group">
+		<li class="list-group-item">Verbesserung der aeroben Energiebereitstellung</li>
+		<li class="list-group-item">Verbesserung des Fett- und Kohlenhydratstoffwechsels</li>
+	</ul>
+	<!-- -->
+	<li id="ProgressiverDauerlauf" style="margin-top:10px" class="list-group-item"><b>Progressiver Dauerlauf</b></li>
+	<ul class="list-group">
+		<li class="list-group-item">1. Drittel der Trainingszeit: 70% der MHF - 10 Schläge</li>
+		<li class="list-group-item">2. Drittel der Trainingszeit: 70% der MHF</li>
+		<li class="list-group-item">3. Drittel der Trainingszeit: 70% der MHF + 10 Schläge</li>
+	</ul>
+	<!-- -->
+	<li id="ExtensiverTempolauf" style="margin-top:10px" class="list-group-item"><b>Extensiver Tempolauf</b></li>
+	<ul class="list-group">
+		<li class="list-group-item">Verbesserung der aeroben Energiebereitstellung</li>
+		<li class="list-group-item">Verbesserung der Sauerstoffaufnahme</li>
+		<li class="list-group-item">Vergrößerung der Kohlenhydratspeicher</li>
+	</ul>
+	<!-- -->
+	<li id="IntensiverTempolauf" style="margin-top:10px" class="list-group-item"><b>Intensiver Tempolauf</b></li>
+	<ul class="list-group">
+		<li class="list-group-item">Anheben der anaeroben Schwelle</li>
+		<li class="list-group-item">Vergrößerung der Kohlenhydratspeicher</li>
+		<li class="list-group-item">Verbesserung der aeroben Kohlenhydratverbrennung</li>
+		<li class="list-group-item">Verbesserung der Sauerstoffaufnahme</li>
+	</ul>
+	<!-- -->
+	<li id="Fettstoffwechseltraining" style="margin-top:10px" class="list-group-item"><b>Fettstoffwechseltraining</b></li>
+	<ul class="list-group">
+		<li class="list-group-item">Mobilisierung der freien Fettsäuren</li>
+		<li class="list-group-item">Vermehrung feinster Blutgefäße (Kapillaren)</li>
+		<li class="list-group-item">Vermehrung der Mitochondrien</li>
+		<li class="list-group-item">Verbesserung der aeroben Energiebereitstellung</li>
+	</ul>
+	<!-- -->
+	<li id="ProgressivesFettstoffwechseltraining" style="margin-top:10px" class="list-group-item"><b>Progressives Fettstoffwechseltraining</b></li>
+	<ul class="list-group">
+	<li class="list-group-item">3/6 der Trainingszeit: 65% der MHF - 5 Schläge</li>
+	<li class="list-group-item">2/6 der Trainingszeit: 65% der MHF</li>
+	<li class="list-group-item">1/6 der Trainingszeit: 65% der MHF + 5 Schläge</li>
+	</ul>
+	<!-- -->
+	<li id="IntensivesIntervalltraining" style="margin-top:10px" class="list-group-item"><b>Intensives Intervalltraining</b></li>
+	<ul class="list-group">
+	<li class="list-group-item">Intervallzeil: 3-5 Minuten</li>
+	<li class="list-group-item">Pausenzeit: 1,5 - 2,5 Minuten</li>
+	<li class="list-group-item">Durchgänge: 4-8</li>
+	<li class="list-group-item">Gesamte Trainingszeit: 30-60 Minuten</li>
+	</ul>
+	<!-- -->
+	<li id="RegenerativerLauf" style="margin-top:10px" class="list-group-item"><b>Regenerativer Lauf</b></li>
+	<ul class="list-group">
+	<li class="list-group-item">Unterstützt die Erholungsvorgänge des Körpers</li>
+	</ul>
+	<!-- -->
+	</ul>
+
+	<div class="container">
+		<div class="row">Dieser Plan ist folgendem Buch entnommen: Baur, Christof ; Thurner, Bernd: In 12 Wochen zum Marathon. München: Droemer Knaur, 2002</div>
+	</div>
+	
+	<script>
+	function countdown(){
+		var dateNow = new Date().getTime();
+		var dateMarathon = new Date(2018,4,13,8,30,0,0).getTime();
+		var TimeRemainig = dateMarathon - dateNow;
+		// Time calculations for days, hours, minutes and seconds
+		var days = Math.floor(TimeRemainig / (1000 * 60 * 60 * 24));
+		var hours = Math.floor((TimeRemainig % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+		var minutes = Math.floor((TimeRemainig % (1000 * 60 * 60)) / (1000 * 60));
+		var seconds = Math.floor((TimeRemainig % (1000 * 60)) / 1000);
+		if (seconds < 0) {
+			seconds = 0;
+		}
+		if (minutes < 0) {
+			minutes = 0;
+			seconds = 0;
+		}
+		if (hours < 0) {
+			hours = 0;
+			minutes = 0;
+			seconds = 0;
+		}
+		if (days < 0) {
+			days = 0;
+			hours = 0;
+			minutes = 0;
+			seconds = 0;
+		}
+		document.getElementById("countdown").innerHTML = "Noch "+days+" Tage, "+hours+" Stunden, "+minutes+" Minuten und "+seconds+" Sekunden";
+	}
+	setInterval(function(){countdown()},1000);
+	// progress bar
+	//          | Woche 1  | Woche 2    | Woche 3   | Woche 4 | Woche 5 | Woche 6| Woche 7   | Woche 8   | Woche 9 | Woche 10     | Woche 11 | Woche 12
+	var count = 55+59+54+85+35+52+20+113+55+42+40+81+53+60    +71       +89+33+63+49+20+86+55+42+25+85+95+41       +44+61+71+63+40+153+64    +69+69;
+	var maxCount = 3475;
+	var progBar = document.getElementById("progressText");
+	progBar.setAttribute("aria-valuemax",maxCount); // = 'Fortschritt: <progress id="progessBar" value="'+count+'" max="'+maxCount+'"></progress> '+Math.round(count/maxCount*100*10)/10+'%';
+	progBar.setAttribute("aria-valuenow",count);
+	progBar.setAttribute("style","width:"+count/maxCount*100+"%");
+	progBar.innerHTML='<b>'+Math.round(count/maxCount*100*10)/10+'%</b>';
+	
+	function calc_avg () {
+		var distance = parseFloat(document.getElementById("distance").value);
+		var time =	parseFloat(document.getElementById("time").value);
+		//if distance == 
+		var avg_speed = (time/distance);
+		var avg_min = Math.floor(avg_speed);
+		var avg_sec = Math.round((avg_speed-avg_min)*60);
+		var avg_sec_formatted = ""
+		if (avg_sec < 10) {
+			var avg_sec_formatted = "0" + avg_sec;
+		}
+		else {
+			var avg_sec_formatted = avg_sec;
+		}
+		var avg_sec_formatted
+		//alert(distance + " " + time + " " + avg_speed);
+		document.getElementById("average").innerHTML = "Durchschnitt: " + avg_min + ":" + avg_sec_formatted + " min/km";
+		}
+
+	document.getElementById("berechnen").onclick = calc_avg;
+	</script>
+</body>
+</html>

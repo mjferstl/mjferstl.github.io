@@ -1,0 +1,109 @@
+body {
+    font-family: 'PT Sans',
+    sans-serif;
+    padding-bottom: 10px;
+}
+.Gruppenspiele {
+    border-radius:8px;
+    background-color:#93bdff;
+    padding: 10px 15px 10px 15px;
+    display:inline-block;
+    text-align:left;
+    width:auto;
+    white-space: nowrap;
+}
+
+.GruppenspieleAnzahl {
+    padding: 0px 15px 0px 5px;
+    text-align:left;
+}
+
+.Gruppentabelle {
+    background-color:#eeeeee;
+    padding: 5px 15px 5px 15px;
+    border-radius:5px;
+    display:inline-block;
+    white-space: nowrap;
+}
+
+.Spielzeiten {
+    padding-right:10px;
+    white-space:nowrap;
+}
+
+h4 {
+    margin-bottom:5px;
+}
+
+.Spielplan_Teamname{
+    width:140px;
+}
+
+.table-added {
+    margin-bottom:0px;
+}
+
+.row {
+	padding-top:10px;
+}
+
+.roundOf16 {
+    background-color:#74fc76;
+    border-radius:10px;
+    padding: 10px 15px 10px 15px;
+    display:inline-block;
+    text-align:left;
+    width:auto;
+    white-space: nowrap;
+}
+
+#quarterFinals {
+    background-color:#fcce74;
+    border-radius:10px;
+    padding: 10px 15px 10px 15px;
+    display:inline-block;
+    text-align:left;
+    width:auto;
+    white-space: nowrap;
+}
+
+#semiFinals {
+    background-color:#ff9b96;
+    border-radius:10px;
+    padding: 10px 15px 10px 15px;
+    display:inline-block;
+    text-align:left;
+    width:auto;
+    white-space: nowrap;
+}
+
+#Final3 {
+    background-color:#fff093;
+    border-radius:10px;
+    padding: 10px 15px 10px 15px;
+    display:inline-block;
+    text-align:left;
+    width:auto;
+    white-space: nowrap;
+}
+
+#Final {
+    background-color:#ffd700;
+    border-radius:10px;
+    padding: 10px 15px 10px 15px;
+    display:inline-block;
+    text-align:left;
+    width:auto;
+    white-space: nowrap;
+}
+
+input[type='number'] {
+    -moz-appearance:textfield;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
